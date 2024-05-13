@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="tomas"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-10-12 10:48:46 PM"/>
+        <attribute name="created" value="dG9tYXM7REVTS1RPUC1DUFQzUjFLOzIwMjItMTAtMTI7MTA6MjY6MzkgUE07Mjg5NA=="/>
+        <attribute name="edited" value="dG9tYXM7REVTS1RPUC1DUFQzUjFLOzIwMjItMTAtMTI7MTA6NDg6NDYgUE07MTszMDA0"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="numbr, result" type="Integer" array="False" size=""/>
+            <declare name="multFive, mulThree, multFift, smFive, smThree, smFift" type="Real" array="False" size=""/>
+            <output expression="&quot;Escreva o n&#250;mero inteiro que quiser&quot;" newline="True"/>
+            <input variable="numbr"/>
+            <assign variable="multFive" expression="numbr/5"/>
+            <assign variable="mulThree" expression="numbr/3"/>
+            <assign variable="multFift" expression="numbr/15"/>
+            <assign variable="smFive" expression="((((multFive+1)/2)*multFive)*5)"/>
+            <assign variable="smThree" expression="((((mulThree+1)/2)*mulThree)*3)"/>
+            <assign variable="smFift" expression="((((multFift+1)/2)*multFift)*15)"/>
+            <if expression="numbr&gt;=0">
+                <then>
+                    <if expression="numbr%5==0">
+                        <then>
+                            <assign variable="result" expression="(((smFive+smThree)-smFift)-numbr)"/>
+                        </then>
+                        <else>
+                            <if expression="numbr%3==0">
+                                <then>
+                                    <assign variable="result" expression="(((smFive+smThree)-smFift)-numbr)"/>
+                                </then>
+                                <else>
+                                    <assign variable="result" expression="((smFive+smThree)-smFift)"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                    <output expression="&quot;O resultado &#233;&quot;" newline="True"/>
+                    <output expression="result" newline="True"/>
+                </then>
+                <else>
+                    <assign variable="result" expression="0"/>
+                    <output expression="&quot;O resultado &#233;&quot;" newline="True"/>
+                    <output expression="result" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

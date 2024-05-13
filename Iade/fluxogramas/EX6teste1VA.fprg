@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="tomas"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-01-18 12:41:06 AM"/>
+        <attribute name="created" value="dG9tYXM7REVTS1RPUC1DUFQzUjFLOzIwMjMtMDEtMTg7MTI6MTE6NDggQU07Mjg4Mg=="/>
+        <attribute name="edited" value="dG9tYXM7REVTS1RPUC1DUFQzUjFLOzIwMjMtMDEtMTg7MTI6NDE6MDYgQU07MTsyOTg3"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="numa" type="Integer" array="False" size=""/>
+            <assign variable="numa" expression="0"/>
+            <declare name="numapassados" type="Integer" array="False" size=""/>
+            <declare name="che" type="Integer" array="False" size=""/>
+            <assign variable="numapassados" expression="0"/>
+            <assign variable="che" expression="0"/>
+            <while expression="che == 0">
+                <input variable="numa"/>
+                <if expression="numa &gt; 0">
+                    <then>
+                        <assign variable="che" expression="1"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Valor inv&#225;lido, reintroduza o valor\n&quot;" newline="True"/>
+                    </else>
+                </if>
+            </while>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="i" expression="0"/>
+            <declare name="notas" type="Integer" array="True" size="numa"/>
+            <while expression="i &lt; numa">
+                <input variable="notas[i]"/>
+                <if expression="notas[i] &gt;= 0 &amp;&amp; notas[i] &lt;= 20">
+                    <then>
+                        <assign variable="i" expression="i+1"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Valor de nota inv&#225;lida, reintroduza a nota\n&quot;" newline="True"/>
+                    </else>
+                </if>
+            </while>
+            <for variable="i" start="0" end="numa-1" direction="inc" step="1">
+                <if expression="notas[i] &gt;= 9.5">
+                    <then>
+                        <assign variable="numapassados" expression="numapassados+1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <output expression="numapassados" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

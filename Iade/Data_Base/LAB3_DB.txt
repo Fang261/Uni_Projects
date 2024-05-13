@@ -1,0 +1,75 @@
+1-SELECT count(stu_name) nstudents
+  FROM student
+
+2-SELECT count(stu_email)  
+  FROM student
+  // Existem 3 alunos com email a NULL
+
+3-SELECT count(distinct stu_place) 'distinct places'
+  FROM student
+
+4-SELECT count(distinct stu_cour_id) 'Courses with Students'
+  FROM student
+
+5-SELECT max(stu_id) 'Highest Student Id'
+  FROM student
+
+6-SELECT min(timestampdiff(YEAR, stu_bdate, now())) 'Age of Youngest'
+  FROM student
+  // Não deu 22, deve ter feito anos
+
+7-SELECT avg(timestampdiff(YEAR, stu_bdate, now())) 'Average Age'
+  FROM student
+
+8-SELECT count(stu_id) 'Students without email'
+  FROM student
+  WHERE stu_email IS NULL
+
+9-SELECT count(stu_place) 'Students from Lx'
+  FROM student
+  WHERE stu_place like LOWER('lisboa')
+
+10-SELECT stu_gender, count(stu_id) 'count'
+   FROM student
+   GROUP BY stu_gender
+
+11-SELECT stu_place, count(stu_id) 'count'
+   FROM student
+   GROUP BY stu_place
+ 
+12-SELECT stu_cour_id, count(stu_id) 'count'
+   FROM student
+   GROUP BY stu_cour_id
+
+13-SELECT YEAR(stu_bdate), count(stu_id) 'count'
+   FROM student
+   GROUP BY YEAR(stu_bdate)
+
+14-SELECT max(t1.nstu) max
+   FROM(SELECT stu_cour_id, count(stu_id) nstu
+        FROM student
+        GROUP BY stu_cour_id) t1
+    
+15-SELECT stu_cour_id, stu_gender, count(stu_id) nstu
+   FROM student
+   GROUP BY stu_cour_id, stu_gender
+
+16-SELECT stu_place place, stu_gender gender, count(stu_id) nstu
+   FROM student
+   GROUP BY stu_place, stu_gender
+
+17-SELECT stu_cour_id, count(stu_id) nstu
+   FROM student
+   GROUP BY stu_cour_id
+   Having count(*) > 2
+
+18-SELECT stu_place place, stu_gender gender, count(stu_id) nstu
+   FROM student
+   GROUP BY stu_place, stu_gender
+   HAVING count(*) = 2
+
+19-SELECT stu_cour_id, count(stu_gender) nstu
+   FROM student
+   WHERE stu_gender = 'F'
+   GROUP BY stu_cour_id
+   HAVING count(*) > 1

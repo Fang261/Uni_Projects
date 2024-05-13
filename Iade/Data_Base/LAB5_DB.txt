@@ -1,0 +1,93 @@
+-- Exercicio 1 
+
+select distinct stu_name, enr_dt_enrollment
+from student
+inner join enrollment on enr_stud_id = stu_id
+where enr_dt_enrollment = (select min(enr_dt_enrollment) from enrollment);
+
+-- Exercicio 2
+
+select cour_name, count(plan_cla_id)
+from studyplan
+inner join course on plan_cour_id = cour_id
+inner join class on plan_cla_id = cla_id
+group by cour_name
+order by 2 desc
+limit 1;
+
+-- Exercicio 3
+
+select cla_name, cla_credits
+from class
+where cla_credits = (select max(cla_credits) from class);
+
+-- Exercicio 4
+
+select cour_name, sum(cla_credits) c
+from studyplan
+inner join course on plan_cour_id = cour_id
+inner join class on plan_cla_id = cla_id
+group by cour_name
+order by c asc
+limit 1;
+
+-- Exercicio 5
+
+select distinct stu_name, dep_initials
+from studyplan
+inner join course on plan_cour_id = cour_id
+inner join class on plan_cla_id = cla_id
+inner join department on cla_dep_id = dep_id
+inner join student on stu_cour_id = cour_id
+where dep_id = 1;
+
+-- Exercicio 6
+
+select stu_name, max(enr_dt_grading)
+from student
+inner join enrollment on enr_stud_id = stu_id
+where enr_dt_grading is not null
+group by stu_name;
+
+-- Exercicio 7
+
+select stu_name, min(enr_dt_enrollment)
+from studyplan
+inner join enrollment on plan_id = enr_plan_id
+inner join class on plan_cla_id = cla_id
+inner join student on stu_id = enr_stud_id
+group by stu_name;
+
+-- Exercicio 8
+select cour_name, count(stu_id) as stu_amount, concat(round((count(stu_id) * 100 / (select count(*) from student)),0),'%') as stu_percentage
+from course
+left join student on stu_cour_id = cour_id
+group by cour_id, cour_name;
+
+-- Exercicio 9
+
+select stu_name, stu_id, count(enr_stud_id) as stu_enrollment
+from student
+inner join enrollment on stu_id = enr_stud_id
+group by stu_name, stu_id
+order by 3 desc
+limit 4;
+
+-- Exercicio 10
+
+select cour_name, count(stu_cour_id) as stu_quantity
+from student
+inner join course on stu_cour_id = cour_id
+group by cour_name
+order by 2 asc;
+
+-- Exercicio 11
+
+select stu_name, cla_name, enr_grade
+from studyplan
+inner join enrollment on plan_id = enr_plan_id
+inner join class on plan_cla_id = cla_id
+inner join student on stu_id = enr_stud_id
+where enr_grade is not null and (stu_id, enr_grade) in (select enr_stud_id, max(enr_grade)
+from enrollment 
+ group by enr_stud_id)

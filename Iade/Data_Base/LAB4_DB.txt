@@ -1,0 +1,48 @@
+1-SELECT *
+  FROM student
+  INNER JOIN course on stu_cour_id = cour_id
+  ORDER BY stu_id
+
+2-SELECT stu_name, cour_name
+  FROM student
+  INNER JOIN course on stu_cour_id = cour_id
+  ORDER BY stu_id
+
+3-SELECT cla_name, dep_name
+  FROM class
+  INNER JOIN department on cla_dep_id = dep_id
+
+4-SELECT cour_name, cla_name, plan_semester
+  FROM course, class, studyplan
+  WHERE plan_cour_id = cour_id AND plan_cla_id = cla_id
+
+5-SELECT cla_name, plan_semester
+  FROM class, studyplan, course
+  WHERE plan_cla_id = cla_id AND plan_cour_id = cour_id AND cour_name = 'Creative Technologies'
+  ORDER BY plan_semester
+
+6-SELECT DISTINCT cour_name
+  FROM course, studyplan, class, department
+  WHERE plan_cour_id = cour_id AND plan_cla_id = cla_id AND cla_dep_id = dep_id AND dep_initials = 'IADE-Tech'
+  ORDER BY cour_name ASC
+
+7-SELECT cla_name
+  FROM course, studyplan, class
+  WHERE plan_cour_id = cour_id AND plan_cla_id = cla_id AND cour_name = 'Games Development' AND plan_semester = 1
+
+8-SELECT S1.stu_name, S2.stu_name, S1.stu_cour_id, S2.stu_cour_id
+  FROM student S1
+  CROSS JOIN student S2
+  ORDER BY S1.stu_id, S2.stu_id ASC
+
+9-SELECT S1.stu_name, S2.stu_name, S1.stu_cour_id, S2.stu_cour_id
+  FROM student S1
+  CROSS JOIN student S2
+  WHERE S2.stu_id > S1.stu_id
+  ORDER BY S1.stu_id, S2.stu_id ASC
+
+10-SELECT S1.stu_name, S2.stu_name, S1.stu_cour_id, S2.stu_cour_id
+   FROM student S1
+   CROSS JOIN student S2
+   WHERE S1.stu_cour_id = S2.stu_cour_id AND S1.stu_name <> S2.stu_name
+   ORDER BY S1.stu_id, S2.stu_id ASC

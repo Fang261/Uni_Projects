@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="tomas"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-10-18 02:51:43 PM"/>
+        <attribute name="created" value="dG9tYXM7REVTS1RPUC1DUFQzUjFLOzIwMjItMTAtMTg7MDI6NDI6MzggUE07Mjg5OA=="/>
+        <attribute name="edited" value="dG9tYXM7REVTS1RPUC1DUFQzUjFLOzIwMjItMTAtMTg7MDI6NTE6NDMgUE07MTszMDAy"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nmbrl" type="Integer" array="False" size=""/>
+            <output expression="&quot;Quantos livros comprou este m&#234;s?&quot;" newline="True"/>
+            <input variable="nmbrl"/>
+            <if expression="nmbrl&gt;=4">
+                <then>
+                    <output expression="&quot;60 pontos&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="nmbrl=3">
+                        <then>
+                            <output expression="&quot;30 pontos&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="nmbrl=2">
+                                <then>
+                                    <output expression="&quot;15 pontos&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <if expression="nmbrl=1">
+                                        <then>
+                                            <output expression="&quot;5 pontos&quot;" newline="True"/>
+                                        </then>
+                                        <else>
+                                            <output expression="&quot;0 pontos&quot;" newline="True"/>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
