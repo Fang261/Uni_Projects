@@ -1,0 +1,71 @@
+1-SELECT  stu_email, stu_name, stu_gender
+  FROM student
+
+2-SELECT  stu_email, stu_name "Full Name", stu_gender
+  FROM student
+
+3-SELECT  stu_id*1000+stu_cour_id, stu_name "Full Name"
+  FROM student
+
+4-SELECT CONCAT('The student', stu_name, 'is enrolled in the course' , stu_cour_id)
+  FROM student
+
+5-SELECT DISTINCT stu_place, stu_gender
+  FROM student
+
+6-SELECT *
+  FROM student
+  ORDER BY stu_bdate DESC
+
+7-SELECT *
+  FROM student
+  ORDER BY stu_gender ASC, stu_name DESC
+
+8-SELECT stu_name, stu_email
+  FROM student
+  ORDER BY stu_bdate
+
+9-SELECT stu_name, stu_id*1000+stu_cour_id 
+  FROM student
+  ORDER BY stu_id*1000+stu_cour_id DESC
+
+10-SELECT *
+   FROM student
+   WHERE stu_gender = 'F'
+
+11-SELECT *
+   FROM student
+   WHERE year(stu_bdate) BETWEEN 1996 AND 1998
+
+12-SELECT *
+  FROM student
+  WHERE year(stu_bdate) < 1996 OR stu_cour_id = 2
+
+13-SELECT *
+   FROM student
+   WHERE stu_gender = 'M' AND stu_cour_id = 1 OR stu_gender = 'F' AND stu_cour_id = 2
+   ORDER BY stu_cour_id DESC
+
+14-SELECT *
+   FROM student
+   WHERE year(stu_bdate) BETWEEN 1996 AND 1998 AND stu_cour_id in (1,2,4)
+
+15-SELECT *
+   FROM student
+   WHERE year(stu_bdate) < 1996 OR year(stu_bdate) > 1998
+
+16-SELECT *
+   FROM student
+   WHERE stu_name LIKE ('J%')
+
+17-SELECT *
+   FROM student
+   WHERE stu_name LIKE ('% _____')
+
+18-SELECT *
+   FROM student
+   WHERE stu_email LIKE ('%@sapo.pt')
+
+19-SELECT *
+   FROM student
+   WHERE stu_place IS NULL
